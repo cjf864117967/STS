@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace 对应的是接口的全名 -->
+<mapper namespace="com.chenjifeng.mapper.StudentMapper">
+	<select id="list" resultType="com.chenjifeng.bean.Student">
+		select s.*,GROUP_CONCAT(c.cname) as courses from student s,course c,s_c sc where s.sid=sc.sid and c.cid = sc.cid group by s.sid
+	</select>
+</mapper>
